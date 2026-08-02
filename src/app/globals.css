@@ -39,7 +39,6 @@ body {
   color: #fafaf8;
 }
 
-/* Custom scrollbar - understated */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -52,7 +51,6 @@ body {
   border: 3px solid rgb(var(--bg));
 }
 
-/* Focus visibility - accessibility floor */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -62,10 +60,26 @@ textarea:focus-visible {
   border-radius: 2px;
 }
 
+/* Langsamer Ken-Burns-Effekt fuer die Hero-Slideshow. Zwei Varianten,
+   die abwechselnd angewendet werden, damit aufeinanderfolgende Slides
+   nicht identisch wirken. */
+@keyframes kenburns-in {
+  from { transform: scale(1) translate(0, 0); }
+  to { transform: scale(1.12) translate(-1%, -1%); }
+}
+@keyframes kenburns-out {
+  from { transform: scale(1.12) translate(1%, 1%); }
+  to { transform: scale(1) translate(0, 0); }
+}
+.animate-kenburns-a {
+  animation: kenburns-in 9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.animate-kenburns-b {
+  animation: kenburns-out 9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
@@ -73,10 +87,5 @@ textarea:focus-visible {
   }
 }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
