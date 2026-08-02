@@ -80,6 +80,14 @@ export const artworks: Artwork[] = [
     image: "/images/works/08.jpg",
     series: "Still Water",
   },
+  {
+    id: "09",
+    title: "Meteorite I",
+    year: "2026",
+    medium: "Guss-Relief — Beton, Acryl, Glasgranulat",
+    dimensions: "26,5 × 18,5 × 3 cm",
+    image: "/images/works/09-meteorite-i.png",
+  },
 ];
 
 export const heroWorks = artworks.slice(0, 3);
